@@ -1,0 +1,50 @@
+<!--Store this code in 'display.html' file inside the 'templates' folder-->
+
+<html lang="en">
+	<head>
+		<title>display</title>
+		<link rel="stylesheet" href="../static/style.css">
+	</head>
+	<body bgcolor="#e6ffee">
+		
+			<div class="navbar">
+				<ul class="nav">
+					<li><a class="logo" href="#">FINDER</a></li>
+					<div style="float: right;">
+					{% if admin %}
+					<li><a href="{{url_for('admindashboard')}}">dashboard</a></li>
+					{% endif %}
+					<li><a href="{{url_for('index')}}">Home</a></li>
+					<li><a href="{{url_for('display')}}">Profile</a></li>
+					<li><a href="{{url_for('logout')}}">Logout</a></li>
+					</div>
+				  </ul>
+			</div>
+			<div class="content" align="center">
+				<div class="contentbar">
+					<h1>Your Details</h1> </br>
+					{% block content %}
+						<div class="border">
+							<table border="1"></br></br></br></br>
+								<tr>
+									<td>Username:</td>
+									<td>{{ account[1] }}</td>
+								</tr>
+								<tr>
+									<td>Password:</td>
+									<td>{{ account[3] }}</td>
+								</tr>
+								<tr>
+									<td>Email ID:</td>
+									<td>{{ account[2] }}</td>
+								</tr>
+														
+							</table>
+						</div>
+					{% endblock %}										
+				</div>
+				
+			</div>
+		
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../static/style.css">
+    
+<title>Document</title>
+</head>
+<body>
+    <div class="navbar">
+        <ul class="nav">
+            <li><a class="logo" href="#">FINDER</a></li>
+            <div style="float: right;">
+                {% if admin %}
+                <li><a href="{{url_for('admindashboard')}}">dashboard</a></li>
+                {% endif %}   
+            <li><a href="{{url_for('index')}}">Home</a></li>
+            <li><a href="{{url_for('create')}}">create</a></li>
+            <li><a href="{{url_for('logout')}}">Logout</a></li>
+            </div>
+          </ul>
+    </div>
+   
+    <div class="content-c">      
+       
+    
+    <div class="content" align="center">
+        <h3>Item details</h3>
+        <table border="1" class="table">
+            <tr>
+                
+                <td>tilte</td>
+                <td>Body</td>
+                <td>Posted by</td>
+                <td>Posted time</td>
+            </tr>
+            <tr>
+                <td>{{items[1]}}</td>
+                <td>{{items[2]}}</td>
+                <td>{{author}}</td>
+                <td>{{items[3]}}</td>
+
+            </tr>
+        </table>
+ 
+    </div>
+    
+    <br>
+    <div>
+        <center>
+            <h1>
+                Address Raised
+            </h1>
+
+            <h3>
+                {{items[6]}}
+            </h3>
+            <hr>
+            <hr>
+            <h1>
+                Address Received
+            </h1>
+
+            <h3>
+                {{items[7]}}
+            </h3>
+            <hr>
+            <hr>
+            
+        </center>
+    </div>
+
+</body>
+</html>

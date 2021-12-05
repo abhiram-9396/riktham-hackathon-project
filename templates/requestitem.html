@@ -1,0 +1,46 @@
+<html>
+    <head>
+        
+        <title> Request item </title>
+        <link rel="stylesheet" href="../static/style.css">       
+    </head>
+    <body>
+        <div class="navbar">
+            <ul class="nav">
+                <li><a class="logo" href="#">FINDER</a></li>
+                <div style="float: right;">
+                    {% if admin %}
+                    <li><a href="{{url_for('admindashboard')}}">dashboard</a></li>
+                    {% endif %} 
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+             
+                    <li><a href="{{url_for('logout')}}">Logout</a></li>
+                    <li><a href="#">About</a></li>
+                </div>
+              </ul>
+           </div>
+      
+        <div class="form-content" align="center">
+            <div class="form-top">
+                <h1>Request Item</h1>
+            </div></br></br>
+            <div>
+              <form action="{{ url_for('create')}}" method="post" autocomplete="off" enctype="multipart/form-data">
+                {% if msg %}
+                <div class="msg">{{ msg }}</div>
+                <br>
+                {% endif %}
+            <input type="text" name="title" placeholder="enter item needed" class="textbox" id="title" required></br></br>
+
+            <input type="text" name="body" placeholder="Enter small description" class="textbox" id="body" required></br></br>
+            <input type="text" name="address_raised" placeholder="enter your address" class="textbox" id="address_raised" required></br></br>
+            <input type="text" name="address_available" placeholder="enter item received address" class="textbox" id="address_available"   hidden></br></br>
+            
+            
+            <input type="checkbox" name="isprivate" hidden><br><br>
+            <input type="submit" class="btn" value="create">
+              </form></br></br>
+            </div>
+        </div>
+    </body>
+</html>

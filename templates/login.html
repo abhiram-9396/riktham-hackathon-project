@@ -1,0 +1,52 @@
+<html>
+    <head>
+        
+        <title> Login </title>
+        <link rel="stylesheet" href="../static/style.css">       
+    </head>
+    <body>
+        <div class="navbar">
+            <ul class="nav">
+                <li><a class="logo" href="#">FINDER</a></li>
+                <div style="float: right;">
+                <li><a href="{{url_for('login')}}">Login</a></li>
+                <li><a href="{{url_for('register')}}">SignUp</a></li>
+                <li><a href="#">About</a></li>
+                </div>
+              </ul>
+           </div>
+           <div class="content" align="center">
+ 
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="msg">
+               <ul>
+                  {% for message in messages %}
+                  <li>{{ message }}</li>
+                  {% endfor %}
+               </ul>
+            </div>
+            {% endif %}
+         {% endwith %}
+                
+    </div> 
+
+        <div class="form-content" align="center">
+            <div class="form-top">
+                <h1>Login</h1>
+            </div></br></br>
+            <div>
+              <form action="{{ url_for('login')}}" method="post" autocomplete="off">
+                {% if msg %}
+                <div class="msg">{{ msg }}</div>
+                <br>
+                {% endif %}
+            <input type="email" name="email" placeholder="Enter Your Email" class="textbox" id="email" required></br></br>
+            <input type="password" name="password" placeholder="Enter Your Password" class="textbox" id="password" required></br></br></br>
+            <input type="submit" class="btn" value="Login">
+              </form></br></br>
+              <p>New to this page? <a href="{{ url_for('register')}}">Register here</a></p>
+            </div>
+        </div>
+    </body>
+</html>
