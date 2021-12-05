@@ -1,0 +1,85 @@
+<html lang="en">
+    <head>
+        <title>index</title>
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+  
+    <body>
+        <div class="navbar">
+            <ul class="nav">
+                <li><a class="logo" href="#">FINDER</a></li>
+                <div style="float: right;">
+             
+                {% if admin %}
+                <li><a href="{{ url_for('admindashboard') }}">dashboard</a></li>
+                {% endif %}
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li><a href="{{url_for('create')}}">Request item</a></li>
+                <li><a href="{{url_for('display')}}">Profile</a></li>
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+                </div>
+              </ul>
+        </div>
+
+            <div class="content" align="center">
+ 
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <div class="msg">
+                           <ul>
+                              {% for message in messages %}
+                              <li>{{ message }}</li>
+                              {% endfor %}
+                           </ul>
+                        </div>
+                        {% endif %}
+                     {% endwith %}
+                           
+                    
+                </div>  
+
+                <div class="content" align="center">
+                    <h3>Items Posted</h3>
+                    <table border="1" class="table">
+                        <tr>
+                            <td>sno</td>
+                            <td>tilte</td>
+                            <td>Body</td>
+                            <td>Request time</td>
+                            <td>Status</td>
+                        </tr>
+                     
+                        {% for item in items %}
+                        
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ item[1] }}</td>
+                            <td>{{ item[2][:30] }}</td>
+                            <!-- <td><a href="{{ url_for('item',item_id=item[0]) }}">{{item[2][14:]}}</a></td>
+                             -->
+                             <td>
+                                 {{item[3]}}
+                             </td>
+                             {% if item[5] %}
+                             <td><a href="{{ url_for('item',item_id=item[0]) }}">Received</a></td>
+                             {% else %}
+                             <td>wait list</td>
+ 
+                             {% endif %}
+                             
+                            <td><a href="{{ url_for('update_item',item_id=item[0]) }}">update</a></td>
+                            <td><a href="{{ url_for('delete_item',item_id=item[0]) }}">delete</a></td>
+                            
+                        </tr>
+
+                        {% endfor %}
+
+                    </table>
+             
+                </div> 
+            
+               
+               
+        
+    </body>
+</html>
